@@ -1,15 +1,15 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 import routes from './publicRoutes'
 
 const Routing = () => {
     return (
-        <>
+        <Switch>
             {routes.map(route =>
-                (<Route key={route.path} path={route.path} component={route.component} />)
+                (<Route key={route.path} exact={route.exact} path={route.path} component={route.component} />)
             )}
-            <Route exact path='/' render={() => <Redirect to='/weather' />} />
-        </>
+            <Redirect to='/weather' />
+        </Switch>
     )
 }
 
